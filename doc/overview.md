@@ -1,6 +1,6 @@
 # overview
 
-## integrated circuit (IC)
+## [integrated circuit (IC)](integrated_circuit.md)
 
 把一个电路中所需的晶体管、电阻、电容和电感等元件及布线互连一起，制作在一小块或几小块半导体晶片或介质基片上，然后封装在一个管壳内，成为具有所需电路功能的微型结构
 
