@@ -428,3 +428,78 @@ bus wire logic 上分为data bus, ddress bus, control bus
 超频: 修改时钟速度，加快CPU的速度，会导致电脑发热或产生乱码
 
 降频: 常用于在关闭屏幕时，省电，对笔记本、手机等移动设备很重要
+
+## 数码管、LED屏幕
+
+数码管($-40^0C\sim 110^0C$)
+
+![20240607201010](https://raw.githubusercontent.com/Nahida-aa/picgo/main/images/20240607201010.png)
+
+其实是8个灯，默认是共阴极，即每个灯默认接地，再接入电压就会亮
+
+再连上查找表就能按照输入显示出相同的数字
+
+黑色亚克力面板
+
+LED屏幕($0^0C\sim 85^0C$)
+
+## 指令集
+
+8051指令集(1982年)(intel)
+
+ARM指令集
+
+## HDL
+
+Hardware Description Language
+
+### Verilog
+
+硬件描述语言（Hardware Description Language，HDL），主要用于设计和模拟数字电路。它在集成电路设计中广泛使用，包括 FPGA 和 ASIC 设计。
+
+法类似于 C 语言，但它是用来描述硬件的，而不是编写通用软件。在 Verilog 中，你可以描述电路的结构（例如，由哪些门电路组成），也可以描述电路的行为（例如，输入改变时输出如何变化）
+
+以下是一个简单的 Verilog 代码示例，它描述了一个 2 输入 AND 门：
+
+```verilog
+module AND_GATE (
+    input wire A,
+    input wire B,
+    output wire F
+);
+    assign F = A & B;
+endmodule
+```
+
+在这个示例中，AND_GATE 是一个模块，它有两个输入 A 和 B，以及一个输出 F。assign 语句表示 F 的值等于 A 和 B 的逻辑与。
+
+### VHDL
+
+（VHSIC Hardware Description Language）是一种硬件描述语言，主要用于设计和模拟数字电路。VHSIC 是 Very High Speed Integrated Circuit（超高速集成电路）的缩写。
+
+VHDL 的语法类似于 Ada 或 Pascal，它是一种强类型的语言，这意味着你必须明确指定所有数据的类型。VHDL 支持并发（所有操作同时发生）和顺序（操作按照特定顺序发生）两种编程模式，这使得它非常适合用来描述复杂的数字电路和系统。
+
+以下是一个简单的 VHDL 代码示例，它描述了一个 2 输入 AND 门：
+
+```vhdl
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity AND_GATE is
+    port (
+        A : in std_logic;
+        B : in std_logic;
+        F : out std_logic
+    );
+end AND_GATE;
+
+architecture Behavior of AND_GATE is
+begin
+    F <= A and B;
+end Behavior;
+```
+
+在这个示例中，AND_GATE 是一个实体，它有两个输入 A 和 B，以及一个输出 F。F <= A and B; 这行代码表示 F 的值等于 A 和 B 的逻辑与。
+
+VHDL 和 Verilog 是当前数字电路设计中最常用的两种硬件描述语言。选择使用哪种语言主要取决于你的具体需求和个人喜好。
+

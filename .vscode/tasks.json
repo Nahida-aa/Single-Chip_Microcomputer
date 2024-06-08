@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe buildfile",
+            "command": "D:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "args": [
+                "-fdiagnostics-color=always",
+                //  GCC 和 Clang 的选项，控制编译器的错误和警告消息是否使用颜色高亮
+                // =auto 当输出是一个终端时，编译器的错误和警告消息才使用颜色高亮
+
+                "-g",
+                // GCC 会在生成的可执行文件中包含额外的调试信息。
+                // 这些信息可以帮助调试器（如 GDB）理解你的程序的源代码结构，
+                // 包括变量名、类型信息、函数调用关系等
+                // 用 -g 参数编译后，可用调试器进行源代码级别的调试，
+                // 例如设置断点、单步执行、查看变量值等
+                // -g 参数生成的调试信息会增加你的可执行文件的大小。
+                // 在你的程序准备发布时，你可能需要去掉 -g 参数，以减小你的可执行文件的大小。
+                "${file}",
+                "-o",
+                // "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+                // 用于指定运行任务时的当前工作目录，表示将当前工作目录的值设置为当前活动文件的目录路径
+            },
+
+            // 问题匹配器是一个工具，用于解析任务的输出，并将输出中的错误和警告映射到编辑器中的问题。
+            // 这样，你可以在编辑器中直接查看和导航到这些问题，而不需要在任务的输出中手动查找
+            "problemMatcher": [
+                "$gcc"
+                // "$gcc" 问题匹配器知道如何解析 GCC 编译器的输出，包括错误和警告的格式
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "调试器生成的任务。"
+        }
+    ],
+    "version": "2.0.0"
+}
